@@ -30,7 +30,7 @@ CREATE TABLE `pp_ad` (
   `sort` tinyint(1) unsigned NOT NULL DEFAULT '99' COMMENT '排序越大越往前',
   `ad_tag` varchar(32) NOT NULL DEFAULT 'index' COMMENT '广告位置',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_ad`
@@ -59,7 +59,7 @@ CREATE TABLE `pp_article` (
   `edit_time` varchar(11) DEFAULT '0',
   `status` tinyint(1) DEFAULT '0' COMMENT '是否删除0-正常，1-删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_article`
@@ -77,7 +77,7 @@ CREATE TABLE `pp_article_tag` (
   `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章ID',
   `tag_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '标签ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_article_tag`
@@ -101,7 +101,7 @@ CREATE TABLE `pp_banner` (
   `edit_time` varchar(11) DEFAULT '0',
   `status` tinyint(1) unsigned DEFAULT '0' COMMENT '是否删除0-正常，1-删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_banner`
@@ -126,7 +126,7 @@ CREATE TABLE `pp_category` (
   `edit_time` varchar(11) DEFAULT '0',
   `status` tinyint(1) DEFAULT '0' COMMENT '是否删除0-正常，1-删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='栏目分类表';
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='栏目分类表';
 
 -- ----------------------------
 --  Records of `pp_category`
@@ -147,7 +147,7 @@ CREATE TABLE `pp_config` (
   `add_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   `edit_time` int(11) NOT NULL DEFAULT '0' COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_config`
@@ -169,7 +169,7 @@ CREATE TABLE `pp_link` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态0-正常1-删除',
   `sort` tinyint(1) unsigned NOT NULL DEFAULT '99' COMMENT '排序越大越往前',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_link`
@@ -189,7 +189,7 @@ CREATE TABLE `pp_tag` (
   `edit_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态，0-正常，1-删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `pp_tag`
@@ -210,7 +210,7 @@ CREATE TABLE `uc_user` (
   `add_time` int(11) NOT NULL,
   `edit_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `uc_user`
