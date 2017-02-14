@@ -1,0 +1,149 @@
+<link rel="stylesheet" type="text/css" href="/static/css/common.css?v=<?=$version?>">
+<div class="row">
+    <div class="col-lg-12">
+    	<div class="container-fluid">
+			<div class="info-center">
+				<div class="page-header">
+					<div class="pull-left">
+						<h4><?=$pageTitle?></h4>
+					</div>
+					<div class="pull-right">
+		                <span onclick="javascript:window.location.reload();"  class="glyphicon glyphicon-refresh"></span>
+		            </div>
+				</div>
+				<div class="indentify-class">
+					<p class="text-sub text-default">
+                        <?php if(isset($pageTips)):?>
+                        	<?=$pageTips?>
+                    	<?php endif;?>
+					</p>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!-- 功能区 -->
+<div class="row">
+	<div class="col-md-12 btn-area">
+		<div class="btn-group pull-left" role="group" aria-label="...">
+			
+		</div>
+	</div>
+</div>
+
+<div class="row" id="main_div" style="overflow-y: scroll;">
+	<div class="col-md-12" id="child_div">
+		<div class="panel-body">
+			<form class="form-horizontal tasi-form" role="form" name="add_banner">
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>标题</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="title" placeholder="" class="form-control input-sm" value="" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>地址</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="url" placeholder="http://或https://开头" class="form-control input-sm" value="" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>排序</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="sort" placeholder="数字" class="form-control input-sm" value="" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+		       
+		        
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>状态</label>
+		            <div class="col-sm-2">
+		            	<label class="radio-inline">
+							<input type="radio" name="status"  value="0" checked>正常
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="status"  value="1">停用
+						</label>
+
+		            </div>
+					
+		            <div class="col-sm-4">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>封面图</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="" name="img_src" readonly>
+		            </div>
+		            <div class="col-sm-6">
+		                <button class="btn btn-default btn-sm" id="upload_img">上传</button>
+		                <em> &nbsp;&nbsp;&nbsp;&nbsp;*尺寸：820*200</em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font></label>
+		            <div class="col-sm-4">
+		                <div  style="width:205px;height: 50px; border:1px #e4e4e4 solid; overflow: hidden;">
+		                	<img src="" width="205" height="50" id="show_img">
+		                </div>
+		            </div>
+		            <div class="col-sm-6">
+		                
+		            </div>
+		        </div>
+
+		         
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>备注</label>
+		            <div class="col-sm-6">
+		                <textarea class="form-control" placeholder="备注" name="detail" rows="2"></textarea>
+		            </div>
+		            <div class="col-sm-4">
+		                <em></em>
+		            </div>
+		        </div>
+		        <hr>
+		        <div class="form-group">
+		            <div class="col-sm-12 text-center">
+		              <button class="btn btn-danger" id="save_data" type="submit">保存</button>
+		              &nbsp;&nbsp;&nbsp;&nbsp;
+		              <button class="btn btn-default " type="button">取消</button>
+		            </div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+</div>
+
+<!-- 文件上传 加载js -->
+<?php $this->load->view('public/plupload.html');?>
+<script> plupImage('image/banner',820,200); </script>
+<!-- 文件上传 加载js -->
+<script src="/static/js/resizewindow.js?v=<?=$version?>"></script>
+<script type="text/javascript">
+
+
+	
+	$(function(){
+		
+		//保存
+		$('#save_data').on('click',function(){
+			var data = $('form[name=add_banner]').serialize();
+			ajaxRequest({'form_data':data},'/admin/banner/save_banner','save_data','POST',3);
+		});
+		
+	});
+</script>

@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="/static/css/search.css?v=<?=$version?>">
+<div class="search-box row">
+	<div class="col-md-8">
+		<div class="btn-group pull-left" role="group" aria-label="...">
+			<button type="button" name="add_article" class="btn btn-default" ><span class="glyphicon glyphicon-plus-sign " ></span> 发布文章</button>
+		</div>
+	</div>
+	<form class="form-horizontal" method="post" id="_CustomizedQueryForm" role="form" action="javascript:void(0);">
+		<div class="col-md-4">
+			<div class="col-lg-12 pull-right">
+			    <div class="input-group input-sm">
+			      <input type="text" class="form-control input-sm" id="cate_name" name="cate_name|like" placeholder="文章名称">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default input-sm" type="button" id="_CustomizedQueryFormSubmit"><span class="glyphicon glyphicon-search"></span>搜索</button>
+		            <button type="button" class="btn btn-default input-sm" id="show_advance_search" tabindex="-1" aria-expanded="false"><span id="span-icon" class="glyphicon glyphicon-zoom-in"></span></button>
+			      </span>
+			    </div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+		</div>
+		<div class="col-sm-12 pull-right" id="advance_search" style="border: 1px dotted #ddd;margin:5px 20px; padding-top:10px;padding-bottom:10px;width:96%;display: none;">
+             <div class="col-xs-4 search_input">
+                <label for="is_nav" class="col-xs-4 control-label search_text"><small>是否推荐</small></label>
+                <div class="col-xs-8 search_myinput">
+                	<select class="form-control input-sm" id="is_nv" name="is_nav|=">
+	                    <option value="-9">全部</option>
+	                    <option value="0">否</option>
+	                    <option value="1">是</option>
+	                </select>
+                 </div>
+			</div>
+
+			<div class="col-xs-4 search_input">
+                <label for="is_nav" class="col-xs-4 control-label search_text"><small>是否头条</small></label>
+                <div class="col-xs-8 search_myinput">
+                	<select class="form-control input-sm" id="is_nv" name="is_nav|=">
+	                    <option value="-9">全部</option>
+	                    <option value="0">否</option>
+	                    <option value="1">是</option>
+	                </select>
+                 </div>
+			</div>
+
+			<div class="col-xs-4 search_input">
+                <label for="is_nav" class="col-xs-4 control-label search_text"><small>所属栏目</small></label>
+                <div class="col-xs-8 search_myinput">
+                	<select class="form-control input-sm" id="cate_id" name="cate_id|=">
+                			 <option value="-9">全部</option>
+		                    <?php foreach($category as $kk=>$f): ?>
+			                <option value="<?=$kk?>"><?=$f?></option>
+        					<?php endforeach; ?>
+	                	</select>
+                 </div>
+			</div>
+
+		</div>
+
+		
+	</form>
+</div>
+
+
+<script src="/static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$('button[name=add_article]').on('click',function(){
+			window.parent.openTab('发布文章', '/admin/article/add');
+		});
+
+</script>
+
+
+
+

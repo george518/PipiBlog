@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="login_page_html">
+	<head>
+		<meta charset="UTF-8">
+		<title>管理后台登录</title>
+		<link rel='shortcut icon' href="/static/img/favicon.png"/>
+		<link rel="stylesheet" type="text/css" href="/static/login/style.css" />
+	</head>
+    <!--登录超时，跳出框架显示登录页		start-->
+    <script>
+    	if(self.location !== top.location){
+    		top.location = self.location;
+    	}
+    </script>
+    <!--登录超时，跳出框架显示登录页		end-->
+	<body class="login_page">
+		<div class="login_page_bg">
+			<div class="login_page_panel">
+				<h1></h1>
+				<div class="username">
+					<input type="text" name="username" id="username" class="box_sizing" autofocus="autofocus" autocomplete="off" placeholder="账号" />
+				</div>
+				<div class="password">
+					<input type="password" name="password" id="password" class="box_sizing" placeholder="密码" />
+				</div>
+				
+				<div class="login_button">
+					<button type="button" id="login_button" class="box_sizing">登&nbsp;&nbsp;录</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="/static/login/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/static/login/custom_tips.js?v=1001" charset="UTF-8"></script>
+	<script type="text/javascript" charset="UTF-8">
+		// 登录-----------------------------------------------------
+		$(document).on('keydown', function (event) {
+            var keyCode = event.which;
+            if (keyCode == 13) {
+                $("#login_button").click();
+            }
+        });
+        $("#login_button").click(function (event) {
+        	event.stopPropagation();
+            var username = $("#username").val().trim();
+            var password = $("#password").val().trim();
+            // var code = $("#verifycode").val().trim();
+            if (!username || !password) {
+                tipsPanel('请输入用户名和密码', '知道了');
+                return;
+            }
+            
+            $.ajax({
+                type: "POST",
+                url: "/login/do_login",
+                data: {
+                    username: username,
+                    password: password,
+                    // code : code
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data==1) {
+                        window.location.href = "/public/home/index";
+                    } else if(data==-1) {
+                        tipsPanel('账号或密码错误，请重新输入', '知道了');
+                    }else
+                    {
+                        tipsPanel('未知错误，请联系工程师', '知道了');
+                    }
+                },
+            });
+        });
+        // 获取验证码------------------------------------------------------
+        $('#get_code').click(function (event) {
+        	event.stopPropagation();
+        	var current = $(this);
+        	var username = $("#username").val().trim();
+            var password = $("#password").val().trim();
+            if (!username || !password) {
+                tipsPanel('请输入账号和密码', '知道了');
+                return;
+            }
+            
+        });
+	</script>
+</html>

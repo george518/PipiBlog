@@ -1,0 +1,22 @@
+@charset "utf-8";
+/*内部css by haodaquan*/
+
+.info-center .page-header{ width:100%;margin:0px 0px 0px 0px; padding:0px; height:57px; line-height:57px;}
+.info-center .page-header h4{margin-top:20px; padding-left:8px;color: #363636;border-left: 2px solid #0098cd;font-size: 16px;}
+/*====表单搜索框====*/
+.info-center .search-box{ margin-top:10px;}
+.search-box .form-group{float:left; padding-right:15px;}
+.search-box .form-group input{width:120px;}
+.search-box .form-group select{ width:auto;}
+.form-span{line-height: 34px;padding-right: 10px;font-weight: bold;}
+.btn-default{ background-color:#f7f7f7;}
+
+/*字体颜色*/
+.text-main{color:#40b2da;}/*主色*/
+.text-sub{color:#098cba;}/*辅色*/
+.text-dot{color:#ff5a00;}/*点缀色*/
+.text-mix{color:#d93600;}/*融合色*/
+.text-white{color:#fff;}/*白色*/
+.text-black{color:#000;}/*黑色*/
+.text-gray{color:#999;}/*浅灰色*/
+.text-drak-grey{color:#3a3a3a;}/*深灰色*/

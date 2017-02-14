@@ -1,0 +1,193 @@
+<link rel="stylesheet" type="text/css" href="/static/css/search.css?v=<?=$version?>">
+<div class="search-box row">
+	<div class="col-md-8">
+		<div class="btn-group pull-left" role="group" aria-label="...">
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus-sign "></span> 新增广告</button>
+		</div>
+	</div>
+	<form class="form-horizontal" method="post" id="_CustomizedQueryForm" role="form" action="javascript:void(0);">
+		<div class="col-md-4">
+			<div class="col-lg-12 pull-right">
+			    <div class="input-group input-sm">
+			      <input type="text" class="form-control input-sm" id="ad_name" name="ad_name|like" placeholder="广告名称">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default input-sm" type="button" id="_CustomizedQueryFormSubmit"><span class="glyphicon glyphicon-search"></span>搜索</button>
+		            <button type="button" class="btn btn-default input-sm" id="show_advance_search" tabindex="-1" aria-expanded="false"><span id="span-icon" class="glyphicon glyphicon-zoom-in"></span></button>
+			      </span>
+			    </div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+		</div>
+		<div class="col-sm-12 pull-right" id="advance_search" style="border: 1px dotted #ddd;margin:5px 20px; padding-top:10px;padding-bottom:10px;width:96%;display: none;">
+             <div class="col-xs-4 search_input">
+                <label for="is_nav" class="col-xs-4 control-label search_text"><small>是否导航</small></label>
+                <div class="col-xs-8 search_myinput">
+                	<select class="form-control input-sm" id="is_nv" name="is_nav|=">
+	                    <option value="-9">全部</option>
+	                    <option value="0">不显示</option>
+	                    <option value="1">显示</option>
+	                </select>
+                 </div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="form_add">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">名称</label>
+                        <div class="col-sm-6">
+						   <input type="text"  class="form-control input-sm" placeholder="" id="ad_name" name="ad_name"/>
+                        </div>
+                        <div class="col-sm-3">
+						    
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">调用标志</label>
+                        <div class="col-sm-6">
+                           <input type="text"  class="form-control input-sm" placeholder="" id="ad_detail" name="ad_tag"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <font color="red">*</font>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    	<label class="col-sm-3 control-label" for="">备注</label>
+                        <div class="col-sm-6">
+                           <input type="text"  class="form-control input-sm" placeholder="" id="ad_detail" name="ad_detail"/>
+                        </div>
+                        <div class="col-sm-3">
+						    
+                        </div>
+		        	</div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">广告代码</label>
+                        <div class="col-sm-6">
+                           <textarea class="form-control" name="ad_code" rows="4"></textarea>
+                        </div>
+                        <div class="col-sm-3">
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="submit_button">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑广告</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="form_edit">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">广告名称</label>
+                        <div class="col-sm-6">
+                           <input type="text"  class="form-control input-sm" placeholder="" id="ad_name" name="ad_name"/>
+                        </div>
+                        <div class="col-sm-3">
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">调用标志</label>
+                        <div class="col-sm-6">
+                           <input type="text"  class="form-control input-sm" placeholder="" id="ad_detail" name="ad_tag"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <font color="red">*</font>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">广告备注</label>
+                        <div class="col-sm-6">
+                           <input type="text"  class="form-control input-sm" placeholder="" id="ad_detail" name="ad_detail"/>
+                        </div>
+                        <div class="col-sm-3">
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">广告代码</label>
+                        <div class="col-sm-6">
+                           <textarea class="form-control" name="ad_code" rows="4"></textarea>
+                        </div>
+                        <div class="col-sm-3">
+                            
+                        </div>
+                    </div>
+
+                   <input type="hidden" name="id" value="0">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="submit_edit_button">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary btn-lg" id='edit' style="display: none" data-toggle="modal" data-target="#editModal">触发模态框</button>
+<script src="/static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$('#submit_button').on('click',function(){
+		var data = $('form[name=form_add]').serialize();
+		ajaxRequest({'data':data},'/admin/ad/save_ad','submit_button','POST',2);
+	});
+
+	$('#submit_edit_button').on('click',function(){
+		var data = $('form[name=form_edit]').serialize();
+		ajaxRequest({'data':data},'/admin/ad/save_ad','submit_edit_button','POST',2);
+	});
+
+	//编辑商品
+	function edit_data_to_form(id)
+	{
+		$.ajax({
+            type: "POST",
+            url: "get_detail",
+            data: {id:id},
+            dataType: 'json',
+            success: function(data) {
+            	var fields = ['id','ad_code','ad_name','ad_detail','ad_tag'];
+            	$.each(fields,function(k,v){
+            		if(v=='ad_code')
+            		{
+            			$('form[name=form_edit]').find('textarea[name='+v+']').val(data['data'][0][v]);
+            		}else
+            		{
+            			$('form[name=form_edit]').find('input[name='+v+']').val(data['data'][0][v]);
+            		}
+            		
+            	});
+            }
+        });  
+	}
+	
+
+</script>
+
+
+
+

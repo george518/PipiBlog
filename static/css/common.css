@@ -1,0 +1,21 @@
+@charset "utf-8";
+/*普通*/
+
+.btn-area{
+	padding:10px 30px;
+}
+
+/**
+ * 小字体
+ */
+.smalltable th,td
+{
+	font-size: 12px;
+}
+
+.ml10{
+	margin-left: 10px;
+}
+.mr10{
+	margin-right: 10px;
+}

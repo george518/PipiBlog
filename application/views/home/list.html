@@ -1,0 +1,109 @@
+<section class="container">
+	<div class="content-wrap">
+		<div class="content">
+			<div class="title">
+				<h3 style="line-height: 1.3"><?=$page_info['cate_name']?></h3>
+			</div>
+
+			<div class="title ad" style="background: #fff">
+				<?php if(isset($ad['index_main_list_1'])):?>
+					<?=$ad['index_main_list_1']?>
+				<?php endif;?>
+		  	</div>
+			<?php if($main_list):?>
+			<?php foreach($main_list as $kk=>$art): ?>
+		  	<article class="excerpt excerpt-<?=$kk?>" style="">
+		  		<a class="focus" href="/<?=$art['id']?>" title="<?=$art['title']?>" target="_blank" >
+		  			<img class="thumb" data-original="<?php echo $art['img_src'] ? $art['img_src'] : '/static/img/default.png'; ?>" src="<?php echo $art['img_src'] ? $art['img_src'] : '/static/img/default.png'; ?>" alt="<?=$art['title']?>"  style="display: inline;">
+		  		</a>
+				<header>
+					<a class="cat" href="/<?=$art['cate_id']?>/1" title="<?=$category[$art['cate_id']]['cate_name']?>" >
+						<?=$category[$art['cate_id']]['cate_name']?><i></i>
+					</a>
+					<h2>
+						<a href="/<?=$art['id']?>" title="<?=$art['title']?>" target="_blank" >
+							<?=$art['title']?>
+						</a>
+					</h2>
+				</header>
+				<p class="meta">
+					<time class="time"><i class="glyphicon glyphicon-time"></i> <?php echo date('Y-m-d',$art['add_time']);?></time>
+					<span class="views"><i class="glyphicon glyphicon-eye-open"></i> <?=$art['hits']?></span> <!-- <a class="comment" href="##comment" title="评论" target="_blank" ><i class="glyphicon glyphicon-comment"></i> <?=$art['comment']?></a> -->
+				</p>
+				<p class="note"><?=$art['detail']?></p>
+			</article>
+			<?php endforeach; ?>
+		    <?php else:?>
+		    	<article style="height: 40px;background: #eee; line-height: 40px;text-align: center;">暂无内容</article>
+		    <?php endif;?>
+
+			<nav class="pagination" style="display: none;">
+				<ul>
+					<li class="prev-page"></li>
+					<li class="active"><span>1</span></li>
+					<li><a href="/home/alist?cid=<?=$cid?>&page=<?=$page?>"><?=$page?></a></li>
+					<li class="next-page"><a href="/home/alist?cid=<?=$cid?>&page=<?=$page?>">下一页</a></li>
+					<li><span>共 2 页</span></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	<aside class="sidebar">
+		<div class="fixed">
+		  <div class="widget widget_search">
+			<form class="navbar-form" action="/search" method="post">
+			  <div class="input-group">
+				<input type="text" name="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">
+				<span class="input-group-btn">
+				<button class="btn btn-default btn-search" name="search" type="submit">搜索</button>
+				</span> </div>
+			</form>
+		  </div>
+		  <div class="widget widget_sentence">
+			<h3>推广</h3>
+			<div class="widget-sentence-content">
+				<?php if(isset($ad['index_right_2'])):?>
+					<?=$ad['index_right_2']?>
+				<?php endif;?>
+			</div>
+		  </div>
+		</div>
+
+		<div class="widget widget_sentence">
+			<h3>标签云</h3>
+			<div class="widget-sentence-content">
+				<ul class="plinks ptags">
+					<?php foreach($tags as $t=>$tg): ?>               
+					<li><a href="/tag/<?=$tg['tag_id']?>" title="<?=$tg['tag_name']?>" draggable="false"><?=$tg['tag_name']?> <span class="badge"><?=$tg['num']?></span></a></li> 
+					<?php endforeach; ?>            
+				         
+				</ul>
+			</div>
+		</div>
+		<div class="widget widget_hot">
+			<h3>热门文章</h3>
+		  	<ul>  
+		  		<?php foreach($comment as $c_kk=>$c_art): ?>         
+				<li><a title="" href="/<?=$c_art['id']?>" ><span class="thumbnail">
+					<img class="thumb" data-original="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" src="<?=$c_art['img_src']?>" alt="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>"  style="display: block;">
+				</span><span class="text"><?=$c_art['title']?></span><span class="muted"><i class="glyphicon glyphicon-time"></i>
+					<?php echo date('Y-m-d',$c_art['add_time']);?>
+				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a></li>
+				<?php endforeach; ?>
+		  	</ul>
+		</div>
+
+		<div class="widget widget_sentence">    
+			<?php if(isset($ad['index_right_3'])):?>
+				<?=$ad['index_right_3']?>
+			<?php endif;?>    
+		</div>
+		<div class="widget widget_sentence">    
+			<?php if(isset($ad['index_right_4'])):?>
+				<?=$ad['index_right_4']?>
+			<?php endif;?>     
+		</div>
+	</aside>
+</section>
+

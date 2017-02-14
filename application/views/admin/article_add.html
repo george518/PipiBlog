@@ -1,0 +1,234 @@
+<style type="text/css">
+	.pt{
+		cursor:pointer;
+		text-decoration:underline;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="/static/css/common.css?v=<?=$version?>">
+<div class="row">
+    <div class="col-lg-12">
+    	<div class="container-fluid">
+			<div class="info-center">
+				<div class="page-header">
+					<div class="pull-left">
+						<h4><?=$pageTitle?></h4>
+					</div>
+					<div class="pull-right">
+		                <span onclick="javascript:window.location.reload();"  class="glyphicon glyphicon-refresh"></span>
+		            </div>
+				</div>
+				<div class="indentify-class">
+					<p class="text-sub text-default">
+                        <?php if(isset($pageTips)):?>
+                        	<?=$pageTips?>
+                    	<?php endif;?>
+					</p>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!-- 功能区 -->
+<div class="row">
+	<div class="col-md-12 btn-area">
+		<div class="btn-group pull-left" role="group" aria-label="...">
+			
+		</div>
+	</div>
+</div>
+
+<div class="row" id="main_div" style="overflow-y: scroll;">
+	<div class="col-md-12" id="child_div">
+		<div class="panel-body">
+			<form class="form-horizontal tasi-form" role="form" name="add_article">
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>所属栏目</label>
+		            <div class="col-sm-4">
+		                <select class="form-control input-sm" id="cate_id" name="cate_id">
+		                    <?php foreach($category as $kk=>$f): ?>
+			                <option value="<?=$kk?>"><?=$f?></option>
+        					<?php endforeach; ?>
+	                	</select>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>标题</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="title" placeholder="" class="form-control input-sm" value="" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>标签</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="tag" placeholder="多个标签使用英文逗号隔开" class="form-control input-sm" value="" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		                <a class="btn btn-default btn-xs" id="tag">插入已有标签</a>
+		            </div>
+		        </div>
+		       
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>来源</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="文章出处" class="form-control input-sm" value="admin" name="from" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>是否推荐</label>
+		            <div class="col-sm-2">
+		            	<label class="radio-inline">
+							<input type="radio" name="recommand"  value="0" checked>否
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="recommand"  value="1">是
+						</label>
+
+		            </div>
+					<label class="col-sm-2 control-label text-right"><font color="red"></font>是否头条</label>
+		            <div class="col-sm-2">
+		            	<label class="radio-inline">
+							<input type="radio" name="headline"  value="0" checked>否
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="headline"  value="1">是
+						</label>
+		            </div>
+		            <div class="col-sm-4">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>封面图</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="" name="img_src" readonly>
+		            </div>
+		            <div class="col-sm-6">
+		                <button class="btn btn-default btn-sm" id="upload_img">上传</button>
+		                <em> &nbsp;&nbsp;&nbsp;&nbsp;*建议尺寸：220*150</em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font></label>
+		            <div class="col-sm-4">
+		                <div  style="width:220px;height: 150px; border:1px #e4e4e4 solid; overflow: hidden;">
+		                	<img src="/static/img/default.png" width="220" height="150" id="show_img">
+		                </div>
+		            </div>
+		            <div class="col-sm-6">
+		                
+		            </div>
+		        </div>
+
+		         
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>摘要</label>
+		            <div class="col-sm-6">
+		                <textarea class="form-control" placeholder="简要描述" name="detail" rows="2"></textarea>
+		            </div>
+		            <div class="col-sm-4">
+		                <em></em>
+		            </div>
+		        </div>
+
+		         <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>内容</label>
+		            <div class="col-sm-8">
+		                <textarea  id="addons_UEditor" required style="width: 700px;height:350px;"  name="content"></textarea>
+		            </div>
+		            <div class="col-sm-4">
+		                <em><font color="red">*</font></em>
+		            </div>
+		        </div>
+		        
+		        <hr>
+		        <div class="form-group">
+		            <div class="col-sm-12 text-center">
+		              <button class="btn btn-danger" id="save_data" type="submit">保存</button>
+		              &nbsp;&nbsp;&nbsp;&nbsp;
+		              <button class="btn btn-default " type="button">取消</button>
+		            </div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">已有标签</h4>
+            </div>
+            <div class="modal-body" id="tag_content">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 文件上传 加载js -->
+<?php $this->load->view('public/plupload.html');?>
+<?php $this->load->view('public/ueditor.html');?>
+<script> plupImage('image/article'); </script>
+<!-- 文件上传 加载js -->
+<script src="/static/js/resizewindow.js?v=<?=$version?>"></script>
+<script src="/static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		//保存
+		$('#save_data').on('click',function(){
+			var data = $('form[name=add_article]').serialize();
+			ajaxRequest({'form_data':data},'/admin/article/save_article','save_data','POST',3);
+		});
+
+		$('#tag').on('click',function(){
+			$.ajax({
+		        type: 'POST',
+		        url: '/admin/tags/get_tags',
+		        data: {tag:true},
+		        dataType: 'json',
+		        success: function(data) {
+		            var str = '';
+		            $.each(data.data,function(k,v){
+		            	str += '<a class="pt" data="'+v['id']+'">'+v['tag_name']+'</a> &nbsp;&nbsp;&nbsp;&nbsp;';
+		            });
+
+		            $('#tag_content').html(str);
+		        }
+		    });  
+			$('#tagModal').modal('show');
+		});
+
+		
+		$(document).on('click','.pt',function(){
+			var id = $(this).attr('data');
+			var tag_name = $(this).text();
+
+			var tag = $('input[name=tag]').val();
+			if(!tag)
+			{
+				$('input[name=tag]').val(tag_name);
+			}else
+			{
+				$('input[name=tag]').val(tag+','+tag_name);
+			}
+		});
+
+		
+	});
+</script>

@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.search_input{
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+.search_text{
+	margin:0px; 
+	padding: 0px; 
+	padding-right:10px;
+	padding-top: 0px;
+	text-align: right;
+}
+.search_myinput{
+	padding: 0px;
+}
+.search_hide{
+	display: none;
+}
+
+.search_show
+{
+	display: block;
+}
+
+.search_btn{
+	text-align: left;
+}

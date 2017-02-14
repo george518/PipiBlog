@@ -1,0 +1,127 @@
+
+    <!-- 引入mmgrid样式 -->
+    <link rel="stylesheet" href="/static/Plugins/mmgrid/examples/css/normalize.css">
+    <!-- <link rel="stylesheet" href="/static/Plugins/mmgrid/examples/bootstrap/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="/static/Plugins/mmgrid/src/mmGrid.css">
+    <link rel="stylesheet" href="/static/Plugins/mmgrid/src/theme/bootstrap/mmGrid-bootstrap.css">
+    <link rel="stylesheet" href="/static/Plugins/mmgrid/src/mmPaginator.css">
+    <link rel="stylesheet" href="/static/Plugins/mmgrid/src/theme/bootstrap/mmPaginator-bootstrap.css">
+    <script src="/static/Plugins/mmgrid/examples/js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- 正文开始 -->
+    <style type="text/css">
+    	#mmg{
+    		font-size: 12px;
+    	}
+    	.mmg-head{
+    		font-size: 14px;
+    	}
+    </style>
+    <div class="row">
+        <div class="col-lg-12">
+        	<div class="container-fluid">
+				<div class="info-center">
+					<div class="page-header">
+						<div class="pull-left">
+							<h4><?=$pageTitle?></h4>
+						</div>
+						<div class="pull-right" style="margin-top: 15px;">
+			                <span onclick="javascript:window.location.reload();"  class="glyphicon glyphicon-refresh"></span>
+			            </div>
+					</div>
+					<div class="indentify-class">
+						<p class="text-sub text-default" >
+                            <?=$pageTips?>
+						</p>
+                        <div style="clear: both"></div>
+						<?php if($showSearch):?>
+							<?php $this->load->view($showSearch);?>
+						<?php endif; ?>
+						<div style="margin-top:5px;">
+		                    <table id="mmg" class="mmg table-condensed">
+		                        <tr>
+		                            <th rowspan="" colspan=""></th>
+		                        </tr>
+		                    </table>
+		                    <div id="pg" style="text-align: right;"></div>
+	                	</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+  <!-- 正文结束 -->
+    <script src="/static/Plugins/mmgrid/examples/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/static/Plugins/mmgrid/examples/js/plugins.js"></script>
+    <script src="/static/Plugins/mmgrid/examples/js/vendor/json2.js"></script>
+    <script src="/static/Plugins/mmgrid/src/mmGrid.js"></script>
+    <script src="/static/Plugins/mmgrid/src/mmPaginator.js?v=<?=$version?>"></script> 
+    <script>
+        $(function(){
+
+            var showFields = <?=$showFields?>;
+            var columnsWidth = <?=$columnsWidth?>;
+            var checkCol = <?=$showCheckCol?>==1 ? true : false;
+            var indexCol = <?=$showIndexCol?>==1 ? true : false;
+
+            var cols = [];
+            $.each(showFields,function(k,v){
+                var col = [];
+                col['title'] = v;
+                col['name']  = k;
+                if(columnsWidth[k]!==undefined)
+                {
+                    col['width'] = columnsWidth[k];
+                } 
+                col['align'] = 'center';
+                if(k!=='action')
+                {
+                    col['sortable'] = true;
+                }
+                
+                cols.push(col);
+            });
+
+            var fixed2 = function(val){
+                if(typeof val != 'number'){
+                    return '';
+                }
+                return val.toFixed(2);
+            }
+
+            //计算绝对高度
+            var windowHeights   = $(window).height();
+            var tableHeight = windowHeights-57-40-40-80;
+
+            var mmg = $('.mmg').mmGrid({
+                indexCol:indexCol,
+                height: tableHeight+'px', 
+                cols: cols, 
+                url: "<?=$queryUrl?>", 
+                method: 'post',
+                remoteSort:true,
+                nowrap:true,
+                //items: items,
+                // sortName: 'mobile',
+                // sortStatus: 'asc',
+                multiSelect: true,
+                checkCol: checkCol,
+                fullWidthRows: true,
+                autoLoad: true,
+                plugins: [
+                    $('#pg').mmPaginator({})
+                ],
+                params: function(){
+                    //如果这里有验证，在验证失败时返回false则不执行AJAX查询。
+                  return {
+                      secucode: $('#secucode').val()
+                  }
+                }
+            });
+            //加载
+            //mmg.load();
+            window.mmg = mmg; 
+        });
+
+
+    </script>
+    

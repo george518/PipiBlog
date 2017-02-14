@@ -1,0 +1,170 @@
+<link rel="stylesheet" type="text/css" href="/static/css/common.css?v=<?=$version?>">
+<div class="row">
+    <div class="col-lg-12">
+    	<div class="container-fluid">
+			<div class="info-center">
+				<div class="page-header">
+					<div class="pull-left">
+						<h4><?=$pageTitle?></h4>
+					</div>
+					<div class="pull-right">
+		                <span onclick="javascript:window.location.reload();"  class="glyphicon glyphicon-refresh"></span>
+		            </div>
+				</div>
+				<div class="indentify-class">
+					<p class="text-sub text-default">
+                        <?php if(isset($pageTips)):?>
+                        	<?=$pageTips?>
+                    	<?php endif;?>
+					</p>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!-- 功能区 -->
+<div class="row">
+	<div class="col-md-12 btn-area">
+		<div class="btn-group pull-left" role="group" aria-label="...">
+			
+		</div>
+	</div>
+</div>
+
+<div class="row" id="main_div" style="overflow-y: scroll;">
+	<div class="col-md-12" id="child_div">
+		<div class="panel-body">
+			<form class="form-horizontal tasi-form" role="form" name="config_form" onsubmit="javascript:return false">
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站名称</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="web_name" placeholder="" class="form-control input-sm" value="<?=$config['web_name']?>">
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站关键字</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$config['keywords']?>" name="keywords">
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站描述</label>
+		            <div class="col-sm-6">
+		                <textarea class="form-control" name="description" rows="2"><?=$config['description']?></textarea>
+		            </div>
+		            <div class="col-sm-4">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站域名</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$config['host']?>" name="host">
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站标语</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$config['slogan']?>" name="slogan">
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站logo</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$config['logo']?>" name="logo" readonly>
+		                
+		            </div>
+		            <div class="col-sm-6">
+		                 <button class="btn btn-default btn-sm" id="upload_img">上传</button><em> &nbsp;&nbsp;&nbsp;&nbsp;*尺寸：162*42</em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font></label>
+		            <div class="col-sm-4">
+		                <div style="width:162px;height: 42px; border:1px #e4e4e4 solid;">
+		                	<img src="<?=$config['logo']?>" width="162" height="42" id="show_img">
+		                </div>
+		            </div>
+		            <div class="col-sm-6">
+		                
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>多说ID</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$config['duoshuo_id']?>" name="duoshuo_id">
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>多说名称</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$config['duoshuo_name']?>" name="duoshuo_name">
+		            </div>
+		            <div class="col-sm-6">
+		                <em><a href="http://duoshuo.com/" target="_blank">进入注册</a></em>
+		            </div>
+		        </div>
+
+		         <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>网站底部信息</label>
+		            <div class="col-sm-6">
+		                <textarea class="form-control " id="value" name="foot" rows="2"><?=$config['foot']?></textarea>
+		            </div>
+		            <div class="col-sm-4">
+		                <em></em>
+		            </div>
+		        </div>
+		        
+		        <hr>
+		        <div class="form-group">
+		            <div class="col-sm-12 text-center">
+		              <button class="btn btn-danger" id="save_data" type="submit">保存</button>
+		              &nbsp;&nbsp;&nbsp;&nbsp;
+		              <button class="btn btn-default " type="button">取消</button>
+		            </div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+</div>
+
+<!-- 文件上传 加载js -->
+<?php $this->load->view('public/plupload.html');?>
+<script> plupImage('image/config',162,42,'upload_img','show_img','logo'); </script>
+<!-- 文件上传 加载js -->
+<script src="/static/js/resizewindow.js?v=<?=$version?>"></script>
+<script type="text/javascript">
+
+
+	
+	$(function(){
+		
+		//保存
+		$('#save_data').on('click',function(){
+			var data = $('form[name=config_form]').serializeArray();
+			ajaxRequest({'data':data},'/admin/config/save_config','save_data','POST',3);
+		});
+		
+	});
+</script>
