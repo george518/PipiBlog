@@ -4,7 +4,7 @@
  Source Server         : localhost
  Source Server Version : 50712
  Source Host           : localhost
- Source Database       : pipi_cms
+ Source Database       : pipi_blog
 
  Target Server Version : 50712
  File Encoding         : utf-8
