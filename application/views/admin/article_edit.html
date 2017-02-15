@@ -46,10 +46,10 @@
 		            <div class="col-sm-4">
 		                <select class="form-control input-sm" id="cate_id" name="cate_id">
 		                    <?php foreach($category as $kk=>$f): ?>
-		                    	<?php if($art['id']==$kk):?>
+		                    	<?php if($art['cate_id']==$kk):?>
 			                		<option value="<?=$kk?>" selected><?=$f?></option>
 			                	<?php else:?>
-			                		<option value="<?=$kk?>" ><?=$f?></option>
+			                		<option value="<?=$kk?>"><?=$f?></option>
 			                	<?php endif;?>
         					<?php endforeach; ?>
 	                	</select>
