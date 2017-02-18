@@ -60,6 +60,7 @@ class Home extends MY_Controller
 		}else{
 			$data['page']  = $page;
 		}
+		$data['config']['title'] = $data['config']['web_name'];
 		$data['main_list'] = $main_list;
 		#热门文章
 		$data['comment'] = $this->article_model->getConditionData("*",'status=0',' hits DESC',10);
@@ -100,7 +101,7 @@ class Home extends MY_Controller
 		$data['page_info'] = $data['category'][$cid];
 
 		#优化
-		$data['config']['web_name'] = $data['page_info']['cate_name'].'_'.$data['config']['web_name'];
+		$data['config']['title'] = $data['page_info']['cate_name'].'_'.$data['config']['web_name'];
 		$data['config']['keywords'] = $data['page_info']['keywords'] ? $data['page_info']['keywords'] : $data['config']['keywords'];
 		$data['config']['description'] = $data['page_info']['description'] ? $data['page_info']['description'] : $data['config']['description'];
 
@@ -146,7 +147,7 @@ class Home extends MY_Controller
 		$data['page_info'] = $data['category'][$content[0]['cate_id']];
 
 		#优化
-		$data['config']['web_name'] = $data['content']['title'].'_'.$data['config']['web_name'];
+		$data['config']['title'] = $data['content']['title'].'_'.$data['config']['web_name'];
 		$data['config']['keywords'] = $data['content']['tag'] ? $data['content']['tag'] : $data['config']['keywords'];
 		$data['config']['description'] = $data['content']['detail'] ? $data['content']['detail'] : $data['config']['description'];
 		#相关
@@ -192,7 +193,7 @@ class Home extends MY_Controller
 	{
 		$data = $this->data;
 		$data['tags'] = $this->get_top_tag();
-		$data['config']['web_name'] = '标签云_'.$data['config']['web_name'];
+		$data['config']['title'] = '标签云_'.$data['config']['web_name'];
 		$data['config']['keywords'] =  '标签云,'.$data['config']['keywords'];
 		$data['config']['description'] = '标签云'.$data['config']['description'];
 		$this->show('home/tags.html',$data);
@@ -255,7 +256,7 @@ class Home extends MY_Controller
 		#热门
 		$data['comment'] = $this->article_model->getConditionData("*",'status=0',' hits DESC',10);
 
-		$data['config']['web_name'] = $tag_info[0]['tag_name'].'_'.$data['config']['web_name'];
+		$data['config']['title'] = $tag_info[0]['tag_name'].'_'.$data['config']['web_name'];
 		$data['config']['keywords'] = $tag_info[0]['tag_name'].','.$data['config']['keywords'];
 		$data['config']['description'] = $tag_info[0]['tag_name'].'-'.$data['config']['description'];
 		$this->show('home/tag_search.html',$data);
@@ -307,7 +308,7 @@ class Home extends MY_Controller
 		#热门
 		$data['comment'] = $this->article_model->getConditionData("*",'status=0',' hits DESC',10);
 
-		$data['config']['web_name'] = $word.'_'.$data['config']['web_name'];
+		$data['config']['title'] = $word.'_'.$data['config']['web_name'];
 		$data['config']['keywords'] = $word.','.$data['config']['keywords'];
 		$data['config']['description'] = $word.'-'.$data['config']['description'];
 

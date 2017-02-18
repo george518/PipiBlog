@@ -43,9 +43,11 @@
 		  	</div>
 		  	<?php foreach($main_list as $kk=>$art): ?>
 		  	<article class="excerpt excerpt-<?=$kk?>" style="">
+		  		<?php if($art['img_src']):?>
 		  		<a class="focus" href="/<?=$art['id']?>" title="<?=$art['title']?>" target="_blank" >
 		  			<img class="thumb" data-original="<?=$art['img_src']?>" src="<?=$art['img_src']?>" alt="<?=$art['title']?>"  style="display: inline;">
 		  		</a>
+		  		<?php endif;?>
 				<header>
 					<a class="cat" href="/<?=$art['cate_id']?>/1" title="<?=$category[$art['cate_id']]['cate_name']?>" >
 						<?=$category[$art['cate_id']]['cate_name']?><i></i>
@@ -80,7 +82,7 @@
 	  <div class="widget widget-tabs">
 		<ul class="nav nav-tabs" role="tablist">
 		  <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >推广</a></li>
-		  <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >推广</a></li>
+		  <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >关于我</a></li>
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane contact active" id="notice">
