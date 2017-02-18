@@ -10,7 +10,7 @@
 class Upload extends MY_Controller
 {
     public $file_path    = UPLOAD_PATH;
-    public $allow_type   = ["jpg", "png", "gif",'xlsx'];//允许上传文件格式 
+    public $allow_type   = ["jpg", "png", "gif",'xlsx','jpeg','ico'];//允许上传文件格式 
     public $allow_size   = 2097152;//上传文件大小 2M2*1024*1024
 
     /**
