@@ -34,6 +34,7 @@
 		<!--[if lt IE 9]>
 		  <script>window.location.href='upgrade-browser.html';</script>
 		<![endif]-->
+		<?=$config['tongji']?>
 	</head>
 	<body class="user-select">
 		<header class="header">
@@ -52,7 +53,7 @@
 					</div>
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-						<h1 class="logo hvr-bounce-in">
+						<h1 class="logo hvr-bounce-in" style="line-height: 60px;">
 							<a href="/" title="<?=$config['web_name']?>">
 								<?php if($config['logo']):?>
 									<img src="<?=$config['logo']?>" alt="<?=$config['web_name']?>">
