@@ -191,7 +191,7 @@ class Home extends MY_Controller
 	public function tags()
 	{
 		$data = $this->data;
-		$data['tags'] = $this->get_top_tag(8);
+		$data['tags'] = $this->get_top_tag();
 		$data['config']['web_name'] = '标签云_'.$data['config']['web_name'];
 		$data['config']['keywords'] =  '标签云,'.$data['config']['keywords'];
 		$data['config']['description'] = '标签云'.$data['config']['description'];
