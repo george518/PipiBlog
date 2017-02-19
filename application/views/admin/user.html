@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="/static/css/common.css?v=<?=$version?>">
+<div class="row">
+    <div class="col-lg-12">
+    	<div class="container-fluid">
+			<div class="info-center">
+				<div class="page-header">
+					<div class="pull-left">
+						<h4><?=$pageTitle?></h4>
+					</div>
+					<div class="pull-right">
+		                <span onclick="javascript:window.location.reload();"  class="glyphicon glyphicon-refresh"></span>
+		            </div>
+				</div>
+				<div class="indentify-class">
+					<p class="text-sub text-default">
+                        <?php if(isset($pageTips)):?>
+                        	<?=$pageTips?>
+                    	<?php endif;?>
+					</p>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!-- 功能区 -->
+<div class="row">
+	<div class="col-md-12 btn-area">
+		<div class="btn-group pull-left" role="group" aria-label="...">
+			
+		</div>
+	</div>
+</div>
+
+<div class="row" id="main_div" style="overflow-y: scroll;">
+	<div class="col-md-12" id="child_div">
+		<div class="panel-body">
+			<form class="form-horizontal tasi-form" role="form" name="user_form" onsubmit="javascript:return false">
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>用户名</label>
+		            <div class="col-sm-4">
+		                <input type="text" name="user_name" placeholder="" class="form-control input-sm" value="<?=$user['user_name']?>" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>登录名</label>
+		            <div class="col-sm-4">
+		                <input type="text" placeholder="" class="form-control input-sm" value="<?=$user['login_name']?>" name="login_name" readonly required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>原密码</label>
+		            <div class="col-sm-4">
+		                <input type="password" placeholder="" class="form-control input-sm" value="" name="password" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		            
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>输入新密码</label>
+		            <div class="col-sm-4">
+		                <input type="password" placeholder="输入新密码，6-12位，数字和字母组合" class="form-control input-sm" value="" name="password1" required>
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-sm-2 control-label text-right"><font color="red"></font>再次密码</label>
+		            <div class="col-sm-4">
+		                <input type="password" placeholder="再次输入新密码，6-12位，数字和字母组合" class="form-control input-sm" value="" required name="password2">
+		            </div>
+		            <div class="col-sm-6">
+		                <em></em>
+		            </div>
+		        </div>
+
+		        
+		        
+		        <hr>
+		        <div class="form-group">
+		            <div class="col-sm-12 text-center">
+		              <button class="btn btn-danger" id="save_data" type="submit">保存</button>
+		              &nbsp;&nbsp;&nbsp;&nbsp;
+		              <button class="btn btn-default " type="button">取消</button>
+		            </div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+</div>
+
+<script src="/static/js/resizewindow.js?v=<?=$version?>"></script>
+<script type="text/javascript">
+
+	$(function(){
+		
+		//保存
+		$('#save_data').on('click',function(){
+			var data = $('form[name=user_form]').serializeArray();
+			ajaxRequest({'data':data},'/admin/user/save_user','save_data','POST');
+		});
+		
+	});
+</script>
