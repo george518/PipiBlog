@@ -296,8 +296,6 @@ class Article extends MY_Controller
             }
         }
         $xml .= '</urlset>';
-
-        dump($xml);
         file_put_contents($path.'/sitemap.xml', $xml);
         $this->ajaxReturn();
     }
