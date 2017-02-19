@@ -280,7 +280,7 @@ class Article extends MY_Controller
             $xml .= '<lastmod>'.$date.'</lastmod>';
             $xml .= '<changefreq> daily </changefreq>';
             $xml .= $kks==0 ? '<priority>1.0</priority>' : '<priority>0.8</priority>';
-            $xml .= '<url>';
+            $xml .= '</url>';
 
 
             if(isset($xm['child']))
@@ -291,7 +291,7 @@ class Article extends MY_Controller
                     $xml .= '<lastmod>'.$date.'</lastmod>';
                     $xml .= '<changefreq>daily</changefreq>';
                     $xml .= '<priority>0.6</priority>';
-                    $xml .= '<url>';
+                    $xml .= '</url>';
                 }
             }
         }
