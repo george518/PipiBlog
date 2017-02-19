@@ -3,6 +3,8 @@
 	<div class="col-md-8">
 		<div class="btn-group pull-left" role="group" aria-label="...">
 			<button type="button" name="add_article" class="btn btn-default" ><span class="glyphicon glyphicon-plus-sign " ></span> 发布文章</button>
+
+			<button type="button" id="refresh_sitemap" class="btn btn-default" ><span class="glyphicon glyphicon-globe" ></span> 生成sitemap</button>
 		</div>
 	</div>
 	<form class="form-horizontal" method="post" id="_CustomizedQueryForm" role="form" action="javascript:void(0);">
@@ -64,6 +66,10 @@
 	$('button[name=add_article]').on('click',function(){
 			window.parent.openTab('发布文章', '/admin/article/add');
 		});
+
+	$('#refresh_sitemap').on('click',function(){
+		ajaxRequest({'data':'yes'},'/admin/article/sitemap','refresh_sitemap','POST');
+	});
 
 </script>
 

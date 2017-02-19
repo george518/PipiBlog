@@ -32,6 +32,7 @@ class Ad extends MY_Controller
     function __construct()
     {
         parent::__construct();
+        $this->user_model->check_user();
         $this->load->model('admin/ad_model');
     }
 

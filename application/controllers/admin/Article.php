@@ -35,6 +35,7 @@ class Article extends MY_Controller
     function __construct()
     {
         parent::__construct();
+        $this->user_model->check_user();
         $this->load->model('admin/article_model');
         $this->load->model('admin/category_model');
     	$category_ = $this->category_model->getConditionData('*','status=0',' sort ASC');
@@ -176,6 +177,128 @@ class Article extends MY_Controller
         $data['pageTitle'] = '编辑文章';
         $data['art'] = $art[0];
         $this->display('admin/article_edit.html',$data);
+    }
+
+    /**
+     * [sitemap 生成sitemap]
+     * @return [type] [description]
+     */
+    public function sitemap()
+    {
+        #网页标题，url
+        
+        $str = '';
+        $arr = [];
+        #首页
+        $this->load->model('admin/config_model');
+        $config = $this->config_model->getConditionData('*','`key`="web_name" or `key`="host"');
+
+        $host = rtrim($config[1]['value'],'/');
+        $arr[0] = ['url'=>$host,'title'=>$config[0]['value']];
+
+        #栏目页
+        $category = $this->category;
+
+        foreach ($this->category as $k => $v) {
+            $arr[$k] = [ 'url'=>$host.'/'.$k,
+                        'title'=>$v];
+        }
+
+        #文章页
+        $article = $this->article_model->getConditionData('id,cate_id,title','1=1');
+
+        foreach ($article as $key => $value) {
+
+            if(!isset($arr[$value['cate_id']])){
+                $arr[$value['cate_id']] = [ 'url'=>$host.'/'.$value['cate_id'],
+                                            'title'=>$category[$value['cate_id']]];
+            }
+            $arr[$value['cate_id']]['child'][] = [ 'url'=>$host.'/'.$value['cate_id'].'/'.$value['id'],
+                                          'title'=>$value['title']];
+        }
+
+        #标签页
+        $this->load->model('admin/tags_model');
+        $tags = $this->tags_model->getConditionData('id,tag_name','1=1');
+        foreach ($tags as $kk => $tag) {
+            $arr['tag/'.$tag['id']] = [ 'url'=>$host.'/tag/'.$tag['id'],
+                                          'title'=>$tag['tag_name']];
+        }
+
+        #组成str
+        $str_tag = '<a href="'.$host.'/tags" title="标签云" ><h3>标签云</h3></a>';
+        foreach ($arr as $ks => $info) {
+            if(!is_numeric($ks))
+            {
+                $str_tag .= '&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$info['url'].'" title="'.$info['title'].'">'.$info['title'].'</a><br/>';
+                continue;
+            }
+
+            $str .= '<a href="'.$info['url'].'" title="'.$info['title'].'"><h3>'.$info['title'].'</h3></a>';
+
+            if(isset($info['child']))
+            {
+                foreach ($info['child'] as $kt => $art) {
+                    $str .= '&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$art['url'].'" title="'.$art['title'].'">'.$art['title'].'</a><br/>';
+                }
+            }
+        }
+
+        $html = '<!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <title>网站地图</title>
+                        <meta charset="utf-8">
+                    </head>
+                    <body>
+                    <style>
+                        h3{
+                            margin:5px;
+
+                        }
+                        a{
+                            line-height:20px;
+                        }
+                        .main{
+                            width:960px;
+                            margin:0 auto;
+                            text-algin:left;
+                        }
+                    </style><div class="main">';
+        $html .= $str.$str_tag;
+        $html .='</div></body></html>';
+        
+        $path = $_SERVER['DOCUMENT_ROOT'];
+        file_put_contents($path.'/sitemap.html', $html);
+        #生成xml
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>
+                    <urlset>';
+
+        $date = date('Y-m-d',strtotime("-1 day"));
+        foreach ($arr as $kks => $xm) {
+            $xml .= '<url>';
+            $xml .= '<loc>'.$xm['url'].'</loc>';
+            $xml .= '<lastmod>'.$date.'</lastmod>';
+            $xml .= '<changefreq> daily </ changefreq>';
+            $xml .= $kks==0 ? '<priority>1.0</priority>' : '<priority>0.8</priority>';
+            $xml .= '<url>';
+
+
+            if(isset($xm['child']))
+            {
+                foreach ($xm['child'] as $ts => $as) {
+                    $xml .= '<url>';
+                    $xml .= '<loc>'.$as['url'].'</loc>';
+                    $xml .= '<lastmod>'.$date.'</lastmod>';
+                    $xml .= '<changefreq> daily </ changefreq>';
+                    $xml .= '<priority>0.6</priority>';
+                    $xml .= '<url>';
+                }
+            }
+        }
+        $xml .= '<urlset>';
+        file_put_contents($path.'/sitemap.xml', $html);
+        $this->ajaxReturn();
     }
 
     /**

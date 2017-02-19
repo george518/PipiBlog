@@ -18,4 +18,5 @@ class Article_model extends MY_Model
 		parent::__construct();
 		$this->_table = 'pp_article';
 	}
+
 }

@@ -112,7 +112,7 @@ class User_model extends MY_Model
     {
         $login_user = $this->get_user();
         if(!$login_user){
-            $url = "http://".$_SERVER['HTTP_HOST']."/public/login";
+            $url = "http://".$_SERVER['HTTP_HOST']."/login";
             header("Location:".$url);
             exit();
         }
