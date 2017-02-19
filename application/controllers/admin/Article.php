@@ -290,7 +290,7 @@ class Article extends MY_Controller
                     $xml .= '<url>';
                     $xml .= '<loc>'.$as['url'].'</loc>';
                     $xml .= '<lastmod>'.$date.'</lastmod>';
-                    $xml .= '<changefreq> daily </ changefreq>';
+                    $xml .= '<changefreq> daily </changefreq>';
                     $xml .= '<priority>0.6</priority>';
                     $xml .= '<url>';
                 }
