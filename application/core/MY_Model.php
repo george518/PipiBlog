@@ -170,6 +170,7 @@ class MY_Model extends CI_Model
 				.' WHERE '.$where;
 		$sql .= $order ? ' ORDER BY '.$order : '';
 		$sql .= $limit ? ' limit '.$limit : '';
+		//dump($sql);
 		return $this->db_pp->query($sql)->result_array();
 	}
 

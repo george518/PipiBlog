@@ -133,7 +133,7 @@
 		                </div>
 		            </div>
 		            <div class="col-sm-6">
-		                
+		                <a class="btn btn-default btn-xs" id="images">使用最近图片</a>
 		            </div>
 		        </div>
 
@@ -182,6 +182,23 @@
             </div>
             <div class="modal-body" id="tag_content">
                 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">最近图片</h4>
+            </div>
+            <div class="modal-body" id="images_content">
+                
+            </div>
+             <div class="modal-footer">
+               
             </div>
         </div>
     </div>
@@ -239,6 +256,33 @@
 			}
 		});
 
+
+		$('#images').on('click',function(){
+			var page = 1;
+			$.ajax({
+		        type: 'POST',
+		        url: '/admin/images/get_images',
+		        data: {page:page},
+		        dataType: 'json',
+		        success: function(data) {
+		            var str = '';
+		            console.log(data);
+		            $.each(data.data,function(k,v){
+		            	str += '<div class="images col-sm-3" data="'+v['img_src']+'"><img src="'+v['img_src']+'" width="100%" /></div>';
+		            });
+		            str += '<div style="clear:both"></div>';
+		            $('#images_content').html(str);
+		        }
+		    });  
+			$('#imagesModal').modal('show');
+		});
+
+		$(document).on('click','.images',function(){
+			var img_src = $(this).attr('data');
+			$('input[name=img_src]').val(img_src);
+			$('#show_img').attr('src',img_src);
+			
+		});
 		
 	});
 </script>

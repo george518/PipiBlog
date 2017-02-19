@@ -7,8 +7,7 @@
 ** @Last Modified time: 2017-02-04 12:26:56
 *************************************************************/
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-defined('APP_KEY')     OR define('APP_KEY', '1001');#接口调用KEY
-defined('APP_SECRET')  OR define('APP_SECRET', 'ed7f8b373db9b733dc0dee62a6d184e8');#接口调用密码
+
 class MY_Controller extends CI_Controller
 {
 
@@ -21,22 +20,6 @@ class MY_Controller extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
-        switch (ENVIRONMENT)
-        {
-            case 'development':
-                #根据开发环境修改
-                define("BASE_URL", 'chanxiyou.com');
-                define("ERP_URL", 'xiyouerp.com');
-                break;
-            case 'production':
-                define("BASE_URL", 'ch.shoplinq.cn');
-                define("ERPURL", 'erp.shoplinq.cn');
-                break;
-            default:
-                define("BASEURL", 'test.tmall.xiyou.com');
-                define("ERPURL", 'xiyouerp.com');
-        }
 	}
 
 	/**

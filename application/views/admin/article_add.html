@@ -117,6 +117,8 @@
 		            <div class="col-sm-6">
 		                <button class="btn btn-default btn-sm" id="upload_img">上传</button>
 		                <em> &nbsp;&nbsp;&nbsp;&nbsp;*建议尺寸：220*150</em>
+
+		                
 		            </div>
 		        </div>
 		        <div class="form-group">
@@ -127,7 +129,7 @@
 		                </div>
 		            </div>
 		            <div class="col-sm-6">
-		                
+		                <a class="btn btn-default btn-xs" id="images">使用最近图片</a>
 		            </div>
 		        </div>
 
@@ -174,6 +176,32 @@
             </div>
             <div class="modal-body" id="tag_content">
                 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+	
+	.images{
+		border: 1px #e4e4e4 solid;
+		padding:5px;
+		cursor:pointer;
+	}
+</style>
+<div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">最近图片</h4>
+            </div>
+            <div class="modal-body" id="images_content">
+                
+            </div>
+             <div class="modal-footer">
+               
             </div>
         </div>
     </div>
@@ -227,6 +255,34 @@
 			{
 				$('input[name=tag]').val(tag+','+tag_name);
 			}
+		});
+
+
+		$('#images').on('click',function(){
+			var page = 1;
+			$.ajax({
+		        type: 'POST',
+		        url: '/admin/images/get_images',
+		        data: {page:page},
+		        dataType: 'json',
+		        success: function(data) {
+		            var str = '';
+		            console.log(data);
+		            $.each(data.data,function(k,v){
+		            	str += '<div class="images col-sm-3" data="'+v['img_src']+'"><img src="'+v['img_src']+'" width="100%" /></div>';
+		            });
+		            str += '<div style="clear:both"></div>';
+		            $('#images_content').html(str);
+		        }
+		    });  
+			$('#imagesModal').modal('show');
+		});
+
+		$(document).on('click','.images',function(){
+			var img_src = $(this).attr('data');
+			$('input[name=img_src]').val(img_src);
+			$('#show_img').attr('src',img_src);
+			
 		});
 
 		

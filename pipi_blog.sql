@@ -153,7 +153,7 @@ CREATE TABLE `pp_config` (
 --  Records of `pp_config`
 -- ----------------------------
 BEGIN;
-INSERT INTO `pp_config` VALUES ('1', 'web_name', '在路上_技术分享博客', '0', '0', '1486831743'), ('2', 'keywords', 'c,php,python,mysql,redis,linux', '0', '0', '1486831743'), ('3', 'description', '分享技术之路上所得所思,php,python,mysql,redis,linux等技术使用心得,坚信技术一直在路上,在路上,勤思考,重实践,懂分享.', '0', '0', '1486831743'), ('4', 'slogan', '在路上 勤思考 懂分享', '0', '0', '1486831743'), ('5', 'logo', '/Uploads/image/config/2017-02-11/148680477238602.png', '0', '0', '1486831743'), ('6', 'foot', 'Copyright © 2017.<a href=\'http://www.haodaquan.com\'>在路上</a> All rights reserved.', '0', '0', '1486831743'), ('7', 'host', 'http://www.haodaquan.com', '0', '0', '1486831743'), ('8', 'duoshuo_id', '931a2789b00626890a16078fb6731ee3', '0', '0', '1486831743'), ('9', 'duoshuo_name', 'haodaquan', '0', '0', '1486831743');
+INSERT INTO `pp_config` VALUES ('1', 'web_name', '在路上_技术分享博客', '0', '0', '1486831743'), ('2', 'keywords', 'c,php,python,mysql,redis,linux', '0', '0', '1486831743'), ('3', 'description', '分享技术之路上所得所思,php,python,mysql,redis,linux等技术使用心得,坚信技术一直在路上,在路上,勤思考,重实践,懂分享.', '0', '0', '1486831743'), ('4', 'slogan', '在路上 勤思考 懂分享', '0', '0', '1486831743'), ('5', 'logo', '/Uploads/image/config/2017-02-11/148680477238602.png', '0', '0', '1486831743'), ('6', 'foot', 'Copyright © 2017.<a href=\'http://www.haodaquan.com\'>在路上</a> All rights reserved.', '0', '0', '1486831743'), ('7', 'host', 'http://www.haodaquan.com', '0', '0', '1486831743'), ('8', 'tongji', '', '0', '0', '1486831743'), ('9', 'duoshuo_name', 'haodaquan', '0', '0', '1486831743');
 COMMIT;
 
 -- ----------------------------
