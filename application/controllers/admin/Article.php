@@ -297,7 +297,7 @@ class Article extends MY_Controller
             }
         }
         $xml .= '<urlset>';
-        file_put_contents($path.'/sitemap.xml', $html);
+        file_put_contents($path.'/sitemap.xml', $xml);
         $this->ajaxReturn();
     }
 
