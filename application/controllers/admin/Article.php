@@ -279,7 +279,7 @@ class Article extends MY_Controller
             $xml .= '<loc>'.$xm['url'].'</loc>';
             $xml .= '<lastmod>'.$date.'</lastmod>';
             $xml .= '<changefreq> daily </changefreq>';
-            $xml .= $kks==0 ? '<priority>1.0</priority>' : '<priority>0.8</priority>';
+            $xml .= $kks===0 ? '<priority>1.0</priority>' : '<priority>0.8</priority>';
             $xml .= '</url>';
 
 
@@ -296,6 +296,8 @@ class Article extends MY_Controller
             }
         }
         $xml .= '</urlset>';
+
+        dump($xml);
         file_put_contents($path.'/sitemap.xml', $xml);
         $this->ajaxReturn();
     }
