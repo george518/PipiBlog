@@ -271,8 +271,7 @@ class Article extends MY_Controller
         $path = $_SERVER['DOCUMENT_ROOT'];
         file_put_contents($path.'/sitemap.html', $html);
         #生成xml
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>
-                    <urlset>';
+        $xml = '<?xml version="1.0" encoding="UTF-8"?><urlset>';
 
         $date = date('Y-m-d',strtotime("-1 day"));
         foreach ($arr as $kks => $xm) {
@@ -296,7 +295,7 @@ class Article extends MY_Controller
                 }
             }
         }
-        $xml .= '<urlset>';
+        $xml .= '</urlset>';
         file_put_contents($path.'/sitemap.xml', $xml);
         $this->ajaxReturn();
     }
