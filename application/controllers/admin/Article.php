@@ -213,7 +213,7 @@ class Article extends MY_Controller
                 $arr[$value['cate_id']] = [ 'url'=>$host.'/'.$value['cate_id'],
                                             'title'=>$category[$value['cate_id']]];
             }
-            $arr[$value['cate_id']]['child'][] = [ 'url'=>$host.'/'.$value['cate_id'].'/'.$value['id'],
+            $arr[$value['cate_id']]['child'][] = [ 'url'=>$host.'/'.$value['id'],
                                           'title'=>$value['title']];
         }
 
