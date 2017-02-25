@@ -66,6 +66,10 @@ class Article extends MY_Controller
     public function query()
     {
         $_POST['status|='] = 0;
+        if(!isset($_POST['sort']))
+        {
+            $_POST['sort'] = 'id.desc';
+        }
         parent::query();
     }
 
