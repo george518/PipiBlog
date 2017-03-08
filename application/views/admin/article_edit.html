@@ -98,6 +98,16 @@
 		        </div>
 
 		        <div class="form-group">
+
+		        	<label class="col-sm-2 control-label text-right"><font color="red"></font>是否原创</label>
+		            <div class="col-sm-2">
+		            	<label class="radio-inline">
+							<input type="radio" name="is_original"  value="0" <?php if($art['is_original']==0):?>checked<?php endif;?>>否
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="is_original"  value="1" <?php if($art['is_original']==1):?>checked<?php endif;?>>是
+						</label>
+		            </div>
 		            <label class="col-sm-2 control-label text-right"><font color="red"></font>是否推荐</label>
 		            <div class="col-sm-2">
 		            	<label class="radio-inline">
@@ -119,9 +129,7 @@
 							<input type="radio" name="headline"  value="1" <?php if($art['headline']==1):?>checked<?php endif;?>>是
 						</label>
 		            </div>
-		            <div class="col-sm-4">
-		                <em></em>
-		            </div>
+		            
 		        </div>
 
 		        <div class="form-group">
@@ -147,7 +155,7 @@
 		        </div>
 
 		         
-		        <div class="form-group">
+		        <!-- <div class="form-group">
 		            <label class="col-sm-2 control-label text-right"><font color="red"></font>摘要</label>
 		            <div class="col-sm-6">
 		                <textarea class="form-control" placeholder="简要描述" name="detail" rows="2"><?=$art['detail']?></textarea>
@@ -155,7 +163,7 @@
 		            <div class="col-sm-4">
 		                <em></em>
 		            </div>
-		        </div>
+		        </div> -->
 
 		         <div class="form-group">
 		            <label class="col-sm-2 control-label text-right"><font color="red"></font>内容</label>

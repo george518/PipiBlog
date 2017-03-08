@@ -89,6 +89,7 @@ class Article extends MY_Controller
 
         foreach ($listData['items'] as $key => $value) {
         	$value['action'] = getButton($value['id'],$buttons);
+            $value['title'] = '<a href="/'.$value['id'].'" target="_blank">'.$value['title'].'</a>';
         	$value['recommand'] = $status[$value['recommand']];
         	$value['headline'] = $status[$value['headline']];
         	$value['add_time'] = date('Y-m-d H:i:s',$value['add_time']);
@@ -120,6 +121,12 @@ class Article extends MY_Controller
     public function save_article()
     {
     	$form_data = format_ajax_data($this->input->post('form_data'));
+
+        $detail = strip_tags($form_data['content']);//去除html标签
+        $pattern = '/\s/';//去除空白
+        $content = preg_replace($pattern, '', $detail);
+        $form_data['detail'] =  mb_substr($content,0,150,'utf-8');
+
         $id  = $type = 0;
     	if (isset($form_data['id'])) {
         	 $result = $this->article_model->editData($form_data,'id='.(int)$form_data['id']);

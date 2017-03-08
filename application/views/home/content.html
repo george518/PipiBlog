@@ -1,3 +1,11 @@
+<style type="text/css">
+	.copyright{
+		border: 1px solid #ccc;
+		background: #efefef;
+		display: block;
+		padding: 15px;
+	}
+</style>
 <section class="container single">
 	<div class="content-wrap">
 		<div class="content">
@@ -19,11 +27,23 @@
 				<p>
 					<?=$content['content']?>		
 				</p>
+				
+				<?php if($content['is_original']==1):?>
+				<div class="copyright">
+					题目：<a href="<?=$config['host']?>/<?=$content['id']?>" title="<?=$content['title']?>" ><?=$content['title']?></a><br/>
+					作者：<?=$config['web_name']?><br/>
+					出处：<a href="<?=$config['host']?>/<?=$content['id']?>"><?=$config['host']?>/<?=$content['id']?></a><br/>
+					<?=$config['copyright']?>
+				</div>
+				<?php endif;?>
+			
 
 			  	<script>
 			  		window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "32" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];
 			  	</script>
 	  		</article>
+
+
   			<div class="article-tags">标签：
   				<?php foreach($tag as $k=>$t): ?>
   					<a href="#list/2/" rel="tag" ><?=$t?></a>
