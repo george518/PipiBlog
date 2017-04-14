@@ -159,6 +159,7 @@ class Home extends MY_Controller
 			foreach ($tag as $key => $value) {
 				if(!$value) continue;
 				$where .= ' tag like "%'.$value.'%" OR';
+				
 			}
 		}
 		if($where)

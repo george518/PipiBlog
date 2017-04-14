@@ -11,7 +11,7 @@
 		<div class="col-md-4">
 			<div class="col-lg-12 pull-right">
 			    <div class="input-group input-sm">
-			      <input type="text" class="form-control input-sm" id="cate_name" name="cate_name|like" placeholder="文章名称">
+			      <input type="text" class="form-control input-sm" id="cate_name" name="title|like" placeholder="文章名称">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default input-sm" type="button" id="_CustomizedQueryFormSubmit"><span class="glyphicon glyphicon-search"></span>搜索</button>
 		            <button type="button" class="btn btn-default input-sm" id="show_advance_search" tabindex="-1" aria-expanded="false"><span id="span-icon" class="glyphicon glyphicon-zoom-in"></span></button>
@@ -21,9 +21,9 @@
 		</div>
 		<div class="col-sm-12 pull-right" id="advance_search" style="border: 1px dotted #ddd;margin:5px 20px; padding-top:10px;padding-bottom:10px;width:96%;display: none;">
              <div class="col-xs-4 search_input">
-                <label for="is_nav" class="col-xs-4 control-label search_text"><small>是否推荐</small></label>
+                <label for="recommand" class="col-xs-4 control-label search_text"><small>是否推荐</small></label>
                 <div class="col-xs-8 search_myinput">
-                	<select class="form-control input-sm" id="is_nv" name="is_nav|=">
+                	<select class="form-control input-sm" id="recommand" name="recommand|=">
 	                    <option value="-9">全部</option>
 	                    <option value="0">否</option>
 	                    <option value="1">是</option>
@@ -32,9 +32,9 @@
 			</div>
 
 			<div class="col-xs-4 search_input">
-                <label for="is_nav" class="col-xs-4 control-label search_text"><small>是否头条</small></label>
+                <label for="headline" class="col-xs-4 control-label search_text"><small>是否头条</small></label>
                 <div class="col-xs-8 search_myinput">
-                	<select class="form-control input-sm" id="is_nv" name="is_nav|=">
+                	<select class="form-control input-sm" id="headline" name="headline|=">
 	                    <option value="-9">全部</option>
 	                    <option value="0">否</option>
 	                    <option value="1">是</option>
