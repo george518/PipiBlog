@@ -10,7 +10,7 @@
  * @param  {String} maxFileSize [文件最大]
  * @return {[type]}             [description]
  */
-function plupFile(file='',btn='upload_file',inputName='upload_file',maxFileSize='2mb')
+function plupFile(file,btn,inputName,maxFileSize)
 {
 
     var url = "/public/upload/file/?size="+maxFileSize+"&file="+file;
@@ -84,7 +84,7 @@ function plupFile(file='',btn='upload_file',inputName='upload_file',maxFileSize=
  * @param  {String}   maxFileSize [最大上传大小]
  * @return {[type]}               [void]
  */
-function plupImage(file='',width='',height='',btn='upload_img',imgShowId='show_img',inputName='img_src',maxFileSize='2mb')
+function plupImage(file,width,height,btn,imgShowId,inputName,maxFileSize)
 {
 
     var url = "/public/upload//image?w="+width+"&h="+height+"&size="+maxFileSize+"&file="+file;
