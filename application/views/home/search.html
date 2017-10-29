@@ -28,7 +28,7 @@
 				</header>
 				<p class="meta">
 					<time class="time"><i class="glyphicon glyphicon-time"></i> <?php echo date('Y-m-d',$art['add_time']);?></time>
-					<span class="views"><i class="glyphicon glyphicon-eye-open"></i> <?=$art['hits']?></span> <!-- <a class="comment" href="##comment" title="评论" target="_blank" ><i class="glyphicon glyphicon-comment"></i> <?=$art['comment']?></a> -->
+					<span class="views"><i class="glyphicon glyphicon-eye-open"></i> <?=$art['hits']?></span><a class="comment" href="javascript:;" title="标签" target="_blank" ><i class="glyphicon glyphicon-tag"></i> <?=$art['tag']?></a> <!-- <a class="comment" href="##comment" title="评论" target="_blank" ><i class="glyphicon glyphicon-comment"></i> <?=$art['comment']?></a> -->
 				</p>
 				<p class="note"><?=$art['detail']?></p>
 			</article>
@@ -61,7 +61,7 @@
 			</form>
 		  </div>
 		  <div class="widget widget_sentence">
-			<h3>推广</h3>
+			<h3>关于我</h3>
 			<div class="widget-sentence-content">
 				<?php if(isset($ad['index_right_2'])):?>
 					<?=$ad['index_right_2']?>
@@ -89,7 +89,7 @@
 					<img class="thumb" data-original="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" src="<?=$c_art['img_src']?>" alt="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>"  style="display: block;">
 				</span><span class="text"><?=$c_art['title']?></span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 					<?php echo date('Y-m-d',$c_art['add_time']);?>
-				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a></li>
+				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a><a class="comment" href="javascript:;" title="标签" target="_blank" ><i class="glyphicon glyphicon-tag"></i> <?=$c_art['tag']?></a></li>
 				<?php endforeach; ?>
 		  	</ul>
 		</div>

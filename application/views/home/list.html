@@ -89,7 +89,7 @@
 					<img class="thumb" data-original="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" src="<?=$c_art['img_src']?>" alt="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>"  style="display: block;">
 				</span><span class="text"><?=$c_art['title']?></span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 					<?php echo date('Y-m-d',$c_art['add_time']);?>
-				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a></li>
+				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a><a class="comment" href="javascript:;" title="标签" target="_blank" ><i class="glyphicon glyphicon-tag"></i> <?=$c_art['tag']?></a></li>
 				<?php endforeach; ?>
 		  	</ul>
 		</div>
