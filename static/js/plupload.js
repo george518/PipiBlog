@@ -87,7 +87,7 @@ function plupFile(file,btn,inputName,maxFileSize)
 function plupImage(file,width,height,btn,imgShowId,inputName,maxFileSize)
 {
 
-    var url = "/public/upload//image?w="+width+"&h="+height+"&size="+maxFileSize+"&file="+file;
+    var url = "/public/upload/image?w="+width+"&h="+height+"&size="+maxFileSize+"&file="+file;
     var uploader = new plupload.Uploader({ //创建实例的构造方法 
         runtimes: 'html5,flash,silverlight,html4', 
         //上传插件初始化选用那种方式的优先级顺序 
