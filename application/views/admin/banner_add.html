@@ -34,7 +34,7 @@
 <div class="row" id="main_div" style="overflow-y: scroll;">
 	<div class="col-md-12" id="child_div">
 		<div class="panel-body">
-			<form class="form-horizontal tasi-form" role="form" name="add_banner">
+			<form class="form-horizontal tasi-form" role="form" name="add_banner" onsubmit="javascript:return false;">
 		        <div class="form-group">
 		            <label class="col-sm-2 control-label text-right"><font color="red"></font>标题</label>
 		            <div class="col-sm-4">
@@ -130,7 +130,7 @@
 
 <!-- 文件上传 加载js -->
 <?php $this->load->view('public/plupload.html');?>
-<script> plupImage('image/banner',820,200,'upload_file','upload_file','2mb'); </script>
+<script> plupImage('image/banner',820,200,'upload_img','show_img','img_src','2mb'); </script>
 <!-- 文件上传 加载js -->
 <script src="/static/js/resizewindow.js?v=<?=$version?>"></script>
 <script type="text/javascript">
@@ -143,7 +143,9 @@
 		$('#save_data').on('click',function(){
 			var data = $('form[name=add_banner]').serialize();
 			ajaxRequest({'form_data':data},'/admin/banner/save_banner','save_data','POST',3);
+			return;
 		});
+
 		
 	});
 </script>
