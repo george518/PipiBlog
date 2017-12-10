@@ -82,8 +82,8 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	<div class="fixed">
 	  <div class="widget widget-tabs">
 		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >推广</a></li>
-		  <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >推广</a></li>
+		  <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >推荐</a></li>
+		  <!-- <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >推广</a></li> -->
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane contact active" id="notice">
@@ -91,11 +91,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 					<?=$ad['index_right_1']?>
 				<?php endif;?>
 			</div>
-			<div role="tabpanel" class="tab-pane contact" id="contact">
+			<!-- <div role="tabpanel" class="tab-pane contact" id="contact">
 			  	<?php if(isset($ad['index_right_2'])):?>
 					<?=$ad['index_right_2']?>
 				<?php endif;?>
-			</div>
+			</div> -->
 		</div>
 	  </div>
 	  <div class="widget widget_search">
@@ -112,9 +112,12 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 		  <h3>热门文章</h3>
 		  <ul>  
 		  		<?php foreach($comment as $c_kk=>$c_art): ?>         
-				<li><a title="" href="/<?=$c_art['id']?>" ><span class="thumbnail">
+				<li><a title="" href="/<?=$c_art['id']?>" >
+				<!-- <span class="thumbnail">
 					<img class="thumb" data-original="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" src="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" alt="<?=$c_art['title']?>"  style="display: block;">
-				</span><span class="text"><?=$c_art['title']?></span><span class="muted"><i class="glyphicon glyphicon-time"></i>
+				</span> -->
+				<span class="text"><?=$c_art['title']?></span>
+				<span class="muted"><i class="glyphicon glyphicon-time"></i>
 					<?php echo date('Y-m-d',$c_art['add_time']);?>
 				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a></li>
 				<?php endforeach; ?>

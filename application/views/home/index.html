@@ -47,6 +47,11 @@
 		  		<a class="focus" href="/<?=$art['id']?>" title="<?=$art['title']?>" target="_blank" >
 		  			<img class="thumb" data-original="<?=$art['img_src']?>" src="<?=$art['img_src']?>" alt="<?=$art['title']?>"  style="display: inline;">
 		  		</a>
+
+		  		<?php else:?>
+		  			<a class="focus" href="/<?=$art['id']?>" title="<?=$art['title']?>" target="_blank" >
+		  				<img class="thumb" data-original="/static/img/default.png" src="/static/img/default.png" alt="<?=$art['title']?>"  style="display: inline;">
+		  			</a>
 		  		<?php endif;?>
 				<header>
 					<a class="cat" href="/<?=$art['cate_id']?>/1" title="<?=$category[$art['cate_id']]['cate_name']?>" >
@@ -82,7 +87,7 @@
 	  <div class="widget widget-tabs">
 		<ul class="nav nav-tabs" role="tablist">
 		  <!-- <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >推广</a></li> -->
-		  <li role="presentation" class="active"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >关于我</a></li>
+		  <li role="presentation" class="active"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >About</a></li>
 		</ul>
 		<div class="tab-content">
 			<!-- <div role="tabpanel" class="tab-pane contact active" id="notice">
@@ -107,13 +112,26 @@
 		</form>
 	  </div>
 	</div>
+
+	<div class="widget widget_sentence">
+			<h3>标签云</h3>
+			<div class="widget-sentence-content">
+				<ul class="plinks ptags">
+					<?php foreach($tags as $t=>$tg): ?>               
+					<li><a href="/tag/<?=$tg['tag_id']?>" title="<?=$tg['tag_name']?>" draggable="false"><?=$tg['tag_name']?> <span class="badge"><?=$tg['num']?></span></a></li> 
+					<?php endforeach; ?>                
+				</ul>
+			</div>
+		</div>
 	<div class="widget widget_hot">
 		  <h3>热门文章</h3>
 		  <ul>  
 		  		<?php foreach($comment as $c_kk=>$c_art): ?>         
-				<li><a title="" href="/<?=$c_art['id']?>" ><span class="thumbnail">
+				<li><a title="" href="/<?=$c_art['id']?>" >
+					<!-- <span class="thumbnail">
 					<img class="thumb" data-original="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" src="<?php echo $c_art['img_src'] ? $c_art['img_src'] : '/static/img/default.png'; ?>" alt="<?=$c_art['title']?>"  style="display: block;">
-				</span><span class="text"><?=$c_art['title']?></span><span class="muted"><i class="glyphicon glyphicon-time"></i>
+					</span> -->
+				<span class="text"><?=$c_art['title']?></span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 					<?php echo date('Y-m-d',$c_art['add_time']);?>
 				</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i><?=$c_art['hits']?></span></a></li>
 				<?php endforeach; ?>

@@ -31,6 +31,7 @@ class Home extends MY_Controller
 			$ad[$v['ad_tag']] = $v['ad_code'];
 		}
 		$this->data['ad'] = $ad;
+		$this->data['version'] = time();
 		$this->every_page = 10;
 	}
 	
