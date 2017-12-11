@@ -59,9 +59,20 @@ class Tags extends MY_Controller
                 'edit'   => '编辑',
                 'changeStatus'=>'置顶',
             );
+
+
         $data['totalCount'] = $listData['totalCount'];
         foreach ($listData['items'] as $key => $value) {
-        	$value['action'] = getButton($value['id'],$buttons);
+            if ($value['is_top']==1) {
+                unset($buttons['changeStatus']);
+                $value['action'] = getButton($value['id'],$buttons).'<button type="button" onclick="return changeStatusAction('.$value['id'].')" class="btn btn-xs btn-default">取消</button>';;
+            }else{
+                $buttons['changeStatus'] = '置顶';
+                $value['action'] = getButton($value['id'],$buttons);
+            }
+
+            $value['is_top'] = $value['is_top']==1 ? '顶':'';
+        	
             $data['items'][$key] = $value;
         }
         return $data;
@@ -79,8 +90,13 @@ class Tags extends MY_Controller
             $this->ajaxReturn("",300,'数据不完整');
         }
 
+        $res = $this->tags_model->getConditionData('is_top','id="'.$id.'"');
+        if (isset($res[0]['is_top']) && $res[0]['is_top']==1 ) {
+            $data['is_top'] = 0;
+        }else{
+            $data['is_top'] = 1;
+        }
         $data['id'] = $id;
-        $data['is_top'] = 1;
         $data['edit_time']   = time();
         $res = $this->tags_model->editData($data,'id="'.$id.'"');
         $res ? $this->ajaxReturn($res) : $this->ajaxReturn($res,300,'置顶失败');
