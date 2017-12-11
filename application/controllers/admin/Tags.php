@@ -12,9 +12,10 @@ class Tags extends MY_Controller
     public $data = [];
     //列表字段，必须设置
     public $showFields = array(
-                                'id'          => 'id',
-                                'tag_name'     => '标签名称',
-                                'action'      => '操作'
+                                'id'            => 'id',
+                                'tag_name'      => '标签名称',
+                                'is_top'        => '是否置顶',
+                                'action'        => '操作'
                             );
     public $columnsWidth = array(
                                 'action'        => 150,
@@ -42,6 +43,7 @@ class Tags extends MY_Controller
     public function query()
     {
         $_POST['status|='] = 0;
+        $_POST['sort'] = 'is_top.desc';
         parent::query();
     }
 
@@ -55,6 +57,7 @@ class Tags extends MY_Controller
         $buttons = array(
                 'delete' => '删除',
                 'edit'   => '编辑',
+                'changeStatus'=>'置顶',
             );
         $data['totalCount'] = $listData['totalCount'];
         foreach ($listData['items'] as $key => $value) {
@@ -62,6 +65,25 @@ class Tags extends MY_Controller
             $data['items'][$key] = $value;
         }
         return $data;
+    }
+
+    /**
+     * [changeStatus 是否置顶]
+     * @return [type] [description]
+     */
+    public function changeStatus()
+    {
+         $id = $this->input->post('id');
+        
+        if(!$id){
+            $this->ajaxReturn("",300,'数据不完整');
+        }
+
+        $data['id'] = $id;
+        $data['is_top'] = 1;
+        $data['edit_time']   = time();
+        $res = $this->tags_model->editData($data,'id="'.$id.'"');
+        $res ? $this->ajaxReturn($res) : $this->ajaxReturn($res,300,'置顶失败');
     }
 
     /**

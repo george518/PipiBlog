@@ -33,10 +33,11 @@ class Tag_model extends MY_Model
 				FROM
 					pp_article_tag AS at
 				LEFT JOIN pp_tag AS t ON t.id = at.tag_id
+				WHERE t.status=0
 				GROUP BY
 					tag_id
 				ORDER BY
-					num DESC';
+					t.is_top DESC,num DESC';
 		if ($limit!=0) {
 			$sql .= ' LIMIT '.(int)$limit;
 		}

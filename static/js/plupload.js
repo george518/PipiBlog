@@ -110,9 +110,11 @@ function plupImage(file,width,height,btn,imgShowId,inputName,maxFileSize)
         }, 
         multi_selection: false, 
         //true:ctrl多文件上传, false 单文件上传 
+        multipart:true,
         init: { 
             FilesAdded: function(up, files) { //文件上传前 
                 uploader.start();
+                console.log(files);
                 //uploader.destroy();
             }, 
             UploadProgress: function(up, file) { //上传中，显示进度条 
