@@ -2536,3 +2536,8 @@ body,input,button,textarea,select {
 	display: block;
 	color: #666;
 }
+
+/*便签求*/
+#tagbox {padding:10px;width:100%;height:250px;background:#fff;}
+#tagbox a{padding:3px 6px;font-family:Microsoft YaHei;text-decoration:none;left:0px}
+#tagbox a:hover{background:#e4e4e4;}

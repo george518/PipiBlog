@@ -114,15 +114,15 @@
 	</div>
 
 	<div class="widget widget_sentence">
-			<h3>标签云</h3>
-			<div class="widget-sentence-content">
-				<ul class="plinks ptags">
-					<?php foreach($tags as $t=>$tg): ?>               
-					<li><a href="/tag/<?=$tg['tag_id']?>" title="<?=$tg['tag_name']?>" draggable="false"><?=$tg['tag_name']?> <span class="badge"><?=$tg['num']?></span></a></li> 
-					<?php endforeach; ?>                
-				</ul>
-			</div>
+		
+		<div id="tagbox">
+		<?php foreach($tags as $t=>$tg): ?> 
+			<a href="/tag/<?=$tg['tag_id']?>"><?=$tg['tag_name']?></a>
+		<?php endforeach; ?>
 		</div>
+
+
+	</div>
 	<div class="widget widget_hot">
 		  <h3>热门文章</h3>
 		  <ul>  

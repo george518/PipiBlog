@@ -68,7 +68,7 @@ class Home extends MY_Controller
 		#友情连接
 		$this->load->model('admin/link_model');
 		$data['link'] = $this->link_model->getConditionData("*",'status=0',' sort DESC');
-		$data['tags'] = $this->get_top_tag(4);
+		$data['tags'] = $this->get_top_tag(50);
 		$this->show('home/index.html',$data);
 	}
 	/**
@@ -116,7 +116,7 @@ class Home extends MY_Controller
 			$data['page']  = $page;
 		}
 
-		$data['tags'] = $this->get_top_tag(8);
+		$data['tags'] = $this->get_top_tag(50);
 
 		#热门
 		$data['comment'] = $this->article_model->getConditionData("*",'status=0',' hits DESC',10);
@@ -184,6 +184,8 @@ class Home extends MY_Controller
 		$url = "http://api.duoshuo.com/threads/counts.json?short_name=".$data['config']['duoshuo_name']."&threads=".$aid;
 		$con = json_decode(http($url,[],'GET'),true);
 		$data['comments'] =  isset($con['response'][1]['comments']) ? $con['response'][1]['comments'] : 123;
+
+		$data['tags'] = $this->get_top_tag(50);
 		$this->show('home/content.html',$data);
 	}
 
@@ -253,7 +255,7 @@ class Home extends MY_Controller
 			$data['page']  = $page;
 		}
 
-		$data['tags'] = $this->get_top_tag(8);
+		$data['tags'] = $this->get_top_tag(50);
 
 		#热门
 		$data['comment'] = $this->article_model->getConditionData("*",'status=0',' hits DESC',10);
@@ -305,7 +307,7 @@ class Home extends MY_Controller
 			$data['page']  = $page;
 		}
 
-		$data['tags'] = $this->get_top_tag(8);
+		$data['tags'] = $this->get_top_tag(50);
 
 		#热门
 		$data['comment'] = $this->article_model->getConditionData("*",'status=0',' hits DESC',10);
