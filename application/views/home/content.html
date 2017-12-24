@@ -81,21 +81,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	<aside class="sidebar">
 	<div class="fixed">
 	  <div class="widget widget-tabs">
-		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >推荐</a></li>
-		  <!-- <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >推广</a></li> -->
-		</ul>
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane contact active" id="notice">
-				<?php if(isset($ad['index_right_1'])):?>
-					<?=$ad['index_right_1']?>
-				<?php endif;?>
-			</div>
-			<!-- <div role="tabpanel" class="tab-pane contact" id="contact">
-			  	<?php if(isset($ad['index_right_2'])):?>
+		<div class="widget widget_sentence">
+			<h3>关于我</h3>
+			<div class="widget-sentence-content">
+				<?php if(isset($ad['index_right_2'])):?>
 					<?=$ad['index_right_2']?>
 				<?php endif;?>
-			</div> -->
+			</div>
 		</div>
 	  </div>
 	  <div class="widget widget_search">

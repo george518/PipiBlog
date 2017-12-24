@@ -26,16 +26,6 @@
 				<p class="note"><?=$headline['detail']?></p>
 			</article>
 
-
-		  	<div class="title">
-				<h3>最新发布</h3>
-				<div class="more">
-					<?php foreach($tags as $t=>$tg): ?>               
-						<a href="/tag/<?=$tg['tag_id']?>" title="<?=$tg['tag_name']?>" draggable="false"><?=$tg['tag_name']?></span></a>
-					<?php endforeach; ?>        
-				</div>
-		  	</div>
-
 		  	<div class="title ad" style="background: #fff">
 				<?php if(isset($ad['index_main_list_1'])):?>
 					<?=$ad['index_main_list_1']?>
@@ -87,7 +77,7 @@
 	  <div class="widget widget-tabs">
 		<ul class="nav nav-tabs" role="tablist">
 		  <!-- <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >推广</a></li> -->
-		  <li role="presentation" class="active"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >About</a></li>
+		  <li role="presentation" class="active"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >关于我</a></li>
 		</ul>
 		<div class="tab-content">
 			<!-- <div role="tabpanel" class="tab-pane contact active" id="notice">
