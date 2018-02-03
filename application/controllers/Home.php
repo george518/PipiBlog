@@ -181,9 +181,10 @@ class Home extends MY_Controller
 		$this->article_model->fieldIncrease(' id='.$aid ,'hits');
 
 		#获取评论数
-		$url = "http://api.duoshuo.com/threads/counts.json?short_name=".$data['config']['duoshuo_name']."&threads=".$aid;
-		$con = json_decode(http($url,[],'GET'),true);
-		$data['comments'] =  isset($con['response'][1]['comments']) ? $con['response'][1]['comments'] : 123;
+		// $url = "http://api.duoshuo.com/threads/counts.json?short_name=".$data['config']['duoshuo_name']."&threads=".$aid;
+		// $con = json_decode(http($url,[],'GET'),true);
+		// $data['comments'] =  isset($con['response'][1]['comments']) ? $con['response'][1]['comments'] : 123;
+		$data['comments'] =  123;
 
 		$data['tags'] = $this->get_top_tag(50);
 		$this->show('home/content.html',$data);
@@ -350,13 +351,12 @@ class Home extends MY_Controller
 	{
 		$this->load->driver('cache');
 		$tags = $this->cache->file->get('tags'.$limit);	
-		print_r($tags);
 		if (!$tags)
 		{
 		    $this->load->model('home/tag_model');
 			$tags =  $this->tag_model->get_tag_order($limit);
 		    // Save into the cache for 5 minutes
-		    $this->cache->file->save('tages'.$limit, $tags, 1800);
+		    $res = $this->cache->file->save('tags'.$limit, $tags, 1800);
 		}
 		return $tags;
 	}
