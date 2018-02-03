@@ -348,8 +348,9 @@ class Home extends MY_Controller
 	 */
 	public function get_top_tag($limit=0)
 	{
-		$this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+		$this->load->driver('cache');
 		$tags = $this->cache->get('tags'.$limit);
+		print_r($tags);
 		if (!$tags)
 		{
 		    $this->load->model('home/tag_model');
@@ -359,7 +360,5 @@ class Home extends MY_Controller
 		}
 		return $tags;
 	}
-
-
 
 }
