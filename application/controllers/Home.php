@@ -349,14 +349,14 @@ class Home extends MY_Controller
 	public function get_top_tag($limit=0)
 	{
 		$this->load->driver('cache');
-		$tags = $this->cache->get('tags'.$limit);
+		$tags = $this->cache->file->get('tags'.$limit);	
 		print_r($tags);
 		if (!$tags)
 		{
 		    $this->load->model('home/tag_model');
 			$tags =  $this->tag_model->get_tag_order($limit);
 		    // Save into the cache for 5 minutes
-		    $this->cache->save('tages'.$limit, $tags, 1800);
+		    $this->cache->file->save('tages'.$limit, $tags, 1800);
 		}
 		return $tags;
 	}
