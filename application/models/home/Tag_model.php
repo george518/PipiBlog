@@ -29,7 +29,8 @@ class Tag_model extends MY_Model
 		$sql = 'SELECT
 					tag_id,
 					count(*)AS num,
-					tag_name
+					tag_name,
+					is_top
 				FROM
 					pp_article_tag AS at
 				LEFT JOIN pp_tag AS t ON t.id = at.tag_id

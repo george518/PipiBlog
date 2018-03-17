@@ -101,10 +101,12 @@
 	  </div>
 	</div>
 	<div class="widget widget_sentence">
+		<h3>标签分类</h3>
 		<div id="tagbox">
-			<?php foreach($tags as $t=>$tg): ?> 
-				<a href="/tag/<?=$tg['tag_id']?>"><?=$tg['tag_name']?></a>
-			<?php endforeach; ?>
+		<?php foreach($tags as $t=>$tg): ?> 
+			<a href="/tag/<?=$tg['tag_id']?>"><?=$tg['tag_name']?></a>
+		<?php endforeach; ?>
+			<a href="/tags">更多</a>
 		</div>
 	</div>
 	<div class="widget widget_hot">
